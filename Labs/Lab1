@@ -1,0 +1,202 @@
+Print Cars:
+
+Expected Outcome: 
+
+  ______     
+ /|_||_\'.__ 
+(   _    _ _\
+='-(_)--(_)-'
+     ______  
+ __.'/_||_|\ 
+/_ _    _   )
+'-(_)--(_)-'=
+  ______          ______  
+ /|_||_\'.__  __.'/_||_|\ 
+(   _    _ _\/_ _    _   )
+='-(_)--(_)-''-(_)--(_)-'=
+
+
+====================================================
+
+mport java.util.Arrays;
+import java.util.StringJoiner;
+
+public class Lab1a {
+
+    public static char[][] make_forward(){
+        char[][] pixel = new char [4][13];
+        pixel[0][0]=' ';
+        pixel[0][1]=' ';
+        pixel[0][2]='_';
+        pixel[0][3]='_';
+        pixel[0][4]='_';
+        pixel[0][5]='_';
+        pixel[0][6]='_';
+        pixel[0][7]='_';
+        pixel[0][8]=' ';
+        pixel[0][9]=' ';
+        pixel[0][10]=' ';
+        pixel[0][11]=' ';
+        pixel[0][12]=' ';
+        pixel[1][0]=' ';
+        pixel[1][1]='/';
+        pixel[1][2]='|';
+        pixel[1][3]='_';
+        pixel[1][4]='|';
+        pixel[1][5]='|';
+        pixel[1][6]='_';
+        pixel[1][7]='\\';
+        pixel[1][8]='\'';
+        pixel[1][9]='.';
+        pixel[1][10]='_';
+        pixel[1][11]='_';
+        pixel[1][12]=' ';
+        pixel[2][0]='(';
+        pixel[2][1]=' ';
+        pixel[2][2]=' ';
+        pixel[2][3]=' ';
+        pixel[2][4]='_';
+        pixel[2][5]=' ';
+        pixel[2][6]=' ';
+        pixel[2][7]=' ';
+        pixel[2][8]=' ';
+        pixel[2][9]='_';
+        pixel[2][10]=' ';
+        pixel[2][11]='_';
+        pixel[2][12]='\\';
+        pixel[3][0]='=';
+        pixel[3][1]='\'';
+        pixel[3][2]='-';
+        pixel[3][3]='(';
+        pixel[3][4]='_';
+        pixel[3][5]=')';
+        pixel[3][6]='-';
+        pixel[3][7]='-';
+        pixel[3][8]='(';
+        pixel[3][9]='_';
+        pixel[3][10]=')';
+        pixel[3][11]='-';
+        pixel[3][12]='\'';
+        return pixel;
+    }
+
+    //make mirror method - reverse order of input into array
+    public static char[][] make_mirror(char[][] mirror){
+        //take in 2D array as para ad return mirrored version
+        char[][] tempArray = mirror;
+        char[][] arrayMirror = new char[4][13];
+
+        // rotates through index and replaces number 1 by 1
+        for(int row = 0; row < arrayMirror.length; row++){
+            int reverse = 12;
+            for(int col =0; col < arrayMirror[0].length; col++) {
+                //one array equals other array
+                arrayMirror[row][col] = tempArray[row][reverse];
+                    reverse--;  //this allows the temp array to count backwords for each column in a row and reset at new row,
+
+//                // switching out any characters match criteria, switch them out
+//                if(arrayMirror[row][col] == '('){ arrayMirror[row][col] = ')'; }
+//                if(arrayMirror[row][col] == ')'){ arrayMirror[row][col] = '('; }
+//                if(arrayMirror[row][col] == '/'){ arrayMirror[row][col] = '\\'; }
+//                if(arrayMirror[row][col] == '\\'){ arrayMirror[row][col] = '/'; }
+
+                //switch case instead of IF statement to change out characters
+                switch(arrayMirror[row][col]){
+                    case '(': arrayMirror[row][col] = ')'; break;
+                    case ')': arrayMirror[row][col] = '('; break;
+                    case '/': arrayMirror[row][col] = '\\'; break;
+                    case '\\': arrayMirror[row][col] = '/'; break;
+                    default: arrayMirror[row][col] = arrayMirror[row][col];
+                }
+
+            }
+        }
+
+        mirror = arrayMirror;
+
+        return mirror;
+    }
+
+
+
+//  create metho that merges two arrays together in order to print both cars on one line
+    public static char[][] together(char[][] right, char[][]left) {
+
+        char[][] collision = new char[4][26];
+
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 13; col++) {
+
+                collision[row][col] = right[row][col];
+            }
+        }
+
+        for (int row = 0; row < 4; row++) {
+            int col1 = 0;
+            for (int col = 13; col < 26; col++) {
+                collision[row][col] = left[row][col1];
+                col1++;
+            }
+        }
+
+        return collision;
+    }
+
+    public static void main(String[] args){
+        char[][] myArray = new char [4][13]; //create new 2D array
+
+        myArray = make_forward(); //uses method to fill myArray
+
+
+        //Displays input 2D array in matrix format
+        for(char[] items : myArray){
+            for(char item : items){
+                System.out.print(item);
+            }
+            System.out.println();
+        }
+        //      //Print in single line sperated by comma
+        //        for(int row = 0; row < myArray.length; row++){
+        //            for(int col =0; col < myArray[0].length; col++){
+        //                System.out.print(myArray[row][col] );
+        //            }
+        //            System.out.println();
+        //        }
+
+        //creating new mirrored array
+        char[][] mirrorArray = new char[4][13];
+
+        //call to make mirror of array
+        mirrorArray = make_mirror(myArray);
+
+        //Displays mirror array 2D array in matrix format
+        for(char[] items : mirrorArray){
+            for(char item : items){
+                System.out.print(item);
+            }
+            System.out.println();
+        }
+
+        char[][] collision = together(myArray, mirrorArray);
+
+
+
+        // Print two cars on one line
+        for(int row = 0; row < collision.length; row++){
+            for(int col =0; col < collision[0].length; col++) {
+
+                System.out.print(collision[row][col]);
+
+//                System.out.print("                ");
+//
+//                for (int col1 = 0; col1 < myArray[0].length; col1++) {
+//                    System.out.print(mirrorArray[row][col1]);
+//                    //System.out.print("\t");
+//                    //System.out.print(string2);
+
+
+                }
+            System.out.println();
+            }
+        }
+    }
