@@ -22,7 +22,7 @@ Expected Outcome:
 ====================================================
 
 mport java.util.Arrays;
-import java.util.StringJoiner;
+
 
 public class Lab1a {
 
