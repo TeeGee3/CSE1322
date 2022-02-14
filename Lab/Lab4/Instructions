@@ -1,0 +1,317 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Lab%204%20v2.pdf
+
+CSE1322L - Lab 4
+Concept Summary:
+1. Inheritance
+2. Over-riding methods
+3. Instantiating objects
+4. Fundamental Class Concepts.
+5. Using your IDE to generate UML diagrams.
+Objective:
+In this lab, you’ll be creating software for the world's smallest bank. This bank can have only one
+customer. The customer will have a checking account and a savings account. The account types have
+some specific rules:
+Checking Accounts:
+- Allows unlimited deposits and withdrawals for free.
+- Provides no interest payments.
+- If the account balance ever drops below $0, the customer is charged a $20 overdraft fee.
+Saving Accounts:
+- Must maintain a $500 balance at all times, otherwise the customer is charged $10 each time they
+make a withdrawal that lowers their balance below $500.
+- Earns 1.5% interest every year
+- The first 5 deposits are free, after that there is a fee of $10 per deposit.
+You’ll provide the bank teller with a simple menu which will allow them to make changes to their
+customer’s accounts.
+You’ll use your IDE to generate UML diagrams of your classes. See UML section below.
+Account Numbers:
+Each account will have an account number. You should use a static variable to keep track of the next
+account number. At the start set this number to 10001.
+In your driver you’ll create a Checking account, and a Savings account. The checking account will end
+up with a account_number of 10001, while the Savings account will end up with an account_number of
+10002.
+Classes:
+● Create a class called “Account”. This will hold things that are true for all account types. Be sure
+to include at least:
+○ An attribute which will hold the account number.
+○ An attribute which will hold the account balance. (e.g. $500.22)
+○ A constructor method which opens the account with a balance of 0.
+■ It should set the account number using the static variable described above.
+○ An overloaded constructor which opens the account with a specific amount which is
+passed to the constructor.
+■ It should set the account number using the static variable described above.
+○ Getter method for accessing the account_number.
+○ Getter/Setter method for accessing the account balance.
+○ A withdrawal method which takes a parameter of the amount to be withdrawn and
+deducts it from the balance.
+○ A deposit method which takes a parameter of the amount to be deposited and adds it to
+the balance.
+● Create a class called “Checking” which should inherit from Account.
+○ You will need an appropriate constructor to set the account balance.
+○ Modify the withdrawal method you inherited to check for the condition where they try to
+overdraft their account.
+■ If an overdraft condition occurs you should print out “Charging an overdraft fee
+of $20 because account is below $0”
+■ Deduct $20 from their balance.
+● Create a class called “Savings” which should inherit from Account.
+○ You will need an appropriate constructor to set the account balance.
+○ Modify the withdrawal method so it implements the rules about dropping below $500
+■ If they drop below $500, you should print “Charging a fee of $10 because you are
+below $500”
+■ Deduct $10 from their balance.
+○ Modify the deposit method so it implements the charge for more than 5 deposits.
+■ As you do the deposit you should print “This is deposit 1 to this account”, where
+1 would be updated to reflect what number deposit this is.
+■ If you are doing the 6th or later deposit, print “Charging a fee of $10”, and deduct
+$10 from their balance.
+○ Add a method which adds 1.5% interest to the account. (This method will be called by
+the teller manually once per year).
+■ Print out how much the customer earned in interest as follows “Customer earned
+15.25 in interest”. Of course it should reflect the actual amount.
+■ Add the interest earned to their balance.
+All classes should be created with appropriate encapsulation. i.e. account balances and account
+numbers should be private and only accessible via getters/setters.
+Don’t worry if the formatting of the dollar figures. Ie, sometimes the interest will be 2.585828225
+and that’s ok. Likewise sometimes the balance will be 100.5 and that’s ok for this lab.
+Driver:
+Create a driver class which creates a checking and savings account. Then keep prompting the user with
+the following menu until they quit:
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+Each menu choice should prompt the user as appropriate to do what it says. i.e. if the user selects
+Deposit to Checking, they should be prompted for the amount. See sample output below.
+UML Diagrams:
+As you learned in lecture UML diagrams allow people to draw complex programs in a graphical way. It
+shows all the attributes and methods in each class, as well as the relationships between the classes.
+Often in your job you’ll have to draw UML on a whiteboard, or update the docs to reflect your changes.
+Thankfully, there are also tools for generating UML. In this lab you’ll be using those tools to create
+UML diagrams of what you coded today.
+Java:
+You’ll need to install a plugin into IntelliJ. Click https://tinyurl.com/y55x5tu6 for instructions.
+C#:
+You’ll need to install a plugin into Visual Studio. Click https://bit.ly/3acYh4w for instructions.
+Both of these links are available on the FYE website in the Resources page under IDE for future
+reference.
+Submission Guidelines:
+For this assignment you will submit 5 files:
+The 3 classes plus the driver program (as source code .java or .cs)
+A UML diagram in PDF format.
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
+Sample Output:
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+3
+How much would you like to deposit into Checking?
+50
+Doing default deposit
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+1
+How much would you like to withdraw from Checking?
+30
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+5
+Your balance for checking 10001 is 20.0
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+1
+How much would you like to withdraw from Checking?
+30
+Charging an overdraft fee of $20 because account is below $0.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+5
+Your balance for checking 10001 is -30.0
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+6
+Your balance for savings 10002 is 0.0
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+4
+How much would you like to deposit into Savings?
+500
+This is deposit number 1 to this account.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+4
+How much would you like to deposit into Savings?
+300
+This is deposit number 2 to this account.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+6
+Your balance for savings 10002 is 800.0
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+4
+How much would you like to deposit into Savings?
+100
+This is deposit number 3 to this account.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+4
+How much would you like to deposit into Savings?
+100
+This is deposit number 4 to this account.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+4
+How much would you like to deposit into Savings?
+100
+This is deposit number 5 to this account.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+4
+How much would you like to deposit into Savings?
+100
+This is deposit number 6 to this account.
+Charging a fee of $10.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+6
+Your balance for savings 10002 is 1190.0
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+7
+Customer earned 17.849999999999998 in interest
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+6
+Your balance for savings 10002 is 1207.85
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+2
+How much would you like to withdraw from Savings?
+750
+Charging a fee of $10 because you are below $500.
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+6
+Your balance for savings 10002 is 447.85
+1. Withdraw from Checking
+2. Withdraw from Savings
+3. Deposit to Checking
+4. Deposit to Savings
+5. Balance of Checking
+6. Balance of Savings
+7. Award Interest to Savings now
+8. Quit
+8
