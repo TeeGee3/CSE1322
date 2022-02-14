@@ -1,0 +1,212 @@
+//MAIN
+
+/*
+Class:CSE1322L
+Section:WJ1 Java
+Term: Spring 2022
+Instructor: Leul Endashaw
+Name: Taylor Goff
+Lab#: 3
+*/
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Lab3 {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int userChoice;
+
+        Quiz Quiz1 = new Quiz();
+
+
+        do{
+            System.out.println("What would you like to do?\n"+
+                "1. Add a question to the quiz\n" +
+                "2. Remove a question from the quiz\n" +
+                "3. Modify a question in the quiz\n" +
+                "4. Take the quiz\n" +
+                "5. Quit");
+
+            userChoice = sc.nextInt();
+            String none = sc.nextLine();
+
+
+
+            switch (userChoice){
+
+                case 1:  Quiz1.add_question();    break; // add q to quiz
+                case 2:  Quiz1.remove_question(); break; // remove q from quiz
+                case 3:  Quiz1.modify_question(); break; // modify q in quiz
+                case 4:  Quiz1.give_quiz();       break; // take quiz
+
+
+            }
+
+
+
+        }while (userChoice !=5);
+
+
+
+
+    }
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public class Questions {
+   private String question;
+   private String answer;
+   private int difficulty;
+
+//general constructor
+    public Questions (String q, String a, int d){
+        question = q;
+        answer = a;
+        difficulty = d;
+    }
+//getter for question
+    public String getQuestion() {
+        return question;
+    }
+//setter for question
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+//getter for answer
+    public String getAnswer() {
+        return answer;
+    }
+//setter for answer
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+//getter for difficulty
+    public int getDifficulty() {
+        return difficulty;
+    }
+//setter for difficulty
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    @Override
+    public String toString(){
+        return "Question: "+question+" Answer: "+answer+" Level of Difficulty: "+difficulty;
+    }
+
+
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Quiz {
+    Scanner sc = new Scanner(System.in);
+    String question;
+    String answer;
+    int difficulty;
+    int userInput;
+    String none;
+
+    ArrayList<Questions> myQuestions=new ArrayList<>(); //array list for my questions
+
+
+    public void add_question(){
+        System.out.println("What is the question Text?");
+            question = sc.nextLine();
+
+        System.out.println("What is the answer?");
+            answer = sc.nextLine();
+
+        System.out.println("How Difficult (1-3)?");
+            difficulty = sc.nextInt();
+            none = sc.nextLine();
+
+        Questions newQuestion=new Questions(question,answer,difficulty);//create object with the input Q+A+D
+
+        myQuestions.add(newQuestion); //add question to array list
+    }
+
+    public void remove_question(){
+        System.out.println("Choose the question to remove?");
+
+        for(int i = 0; i < myQuestions.size(); i++){ //for loop to print all questions in the array list
+            System.out.println(i+". "+myQuestions.get(i).getQuestion());
+        }
+
+        userInput = sc.nextInt();
+        none = sc.nextLine();
+
+        myQuestions.remove(userInput);
+    }
+
+
+    public void modify_question(){
+        System.out.println("Choose the question to modify?");
+
+        for(int i = 0; i < myQuestions.size(); i++){ //for loop to print all questions in the array list
+            System.out.println(i+". "+myQuestions.get(i).getQuestion());
+        }
+
+        userInput = sc.nextInt();
+        none = sc.nextLine();
+
+        System.out.println("What is the question Text?");
+            question = sc.nextLine();
+            myQuestions.get(userInput).setQuestion(question);
+
+        System.out.println("What is the answer?");
+            answer = sc.nextLine();
+            myQuestions.get(userInput).setAnswer(answer);
+
+        System.out.println("How Difficult (1-3)?");
+            difficulty = sc.nextInt();
+            none = sc.nextLine();
+            myQuestions.get(userInput).setDifficulty(difficulty);
+
+    }
+
+    public void give_quiz(){
+        int totalCorrect = 0;
+
+        for(int i = 0; i < myQuestions.size(); i++){ //for loop to print all questions in the array list
+            String userAnswer;
+            String output;
+
+
+            System.out.println(myQuestions.get(i).getQuestion());
+                userAnswer = sc.nextLine();
+
+            if(myQuestions.get(i).getAnswer().equals(userAnswer)){
+
+                output = "Correct";
+                totalCorrect= totalCorrect +1;
+
+            }
+            else{
+                output = "Incorrect";
+            }
+
+            System.out.println(output);
+
+        }
+
+        System.out.println("You got "+totalCorrect+" out of "+myQuestions.size());
+
+
+
+    }
+
+
+}
+
