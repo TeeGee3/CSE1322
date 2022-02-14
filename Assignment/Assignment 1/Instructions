@@ -1,0 +1,131 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Assignment%201%20v4.pdf
+
+
+CSE1322L Assignment 1
+Define the following three classes:
+1) Circle
+a) Must have a private attribute called radius of type double.
+b) Must have a constructor which takes a single parameter of type double. It
+should set the class attribute radius to this value.
+c) Must have a method called circumference, which takes no parameters,
+and returns a double. The circumference of a circle is calculated by
+multiplying 2 * Pi * radius. Note: both Java and C# have a constant called
+Math.PI which is equal to Pi.
+d) Must have a method called area, which takes no parameters and returns a
+double. The area of a circle is calculated by multiplying Pi * radius^2. The
+Math class in both Java and C# have a method for calculating one number
+raised to a power. You’ll need to look up this method and use it to raise
+the radius to the second power.
+2) Triangle
+a) Must have 3 private attributes to hold side1, side2 and side3. Each of
+which should be of type double.
+b) Must have a constructor that takes in 3 parameters and sets the 3
+attributes
+c) Must have an overloaded constructor that takes no parameters and sets
+the 3 attributes to sizes 3, 4 and 5.
+d) Must have a method called perimeter which takes in no parameters and
+returns a double. The perimeter of a triangle is calculated by adding
+side1+side2+side3
+e) Must have a method called area which takes no parameters and returns a
+double. The area of a triangle is calculated as follows (You’ll need to look
+up the square root function in the Math object in Java or C#):
+i) Calculate p=(side1+side2+side3)/2
+ii) Take the square root of (p*(p-side1)*(p-side2)*(p-side3)).
+f) Must have a method called height which takes no parameters and returns
+a double. The height of a triangle is calculated as follows:
+i) Find the smallest of the 3 sides (side1, side2 or side3)
+ii) Multiple the area of the triangle by 2, then divide that by the
+smallest side.
+g) Override the toString/ToString method in this class. Have it return a string
+that gives the details of the triangle. For example: “Triangle has sides x, y 
+and z. It has an area of X and perimeter of Y”.
+3) Rectangle
+a) Must have 2 private attributes height and width. Both of which should be
+of type double.
+b) Must have a constructor which takes in 2 parameters and sets the 2
+attributes of the class
+c) Must have a method called perimeter which takes no parameters and
+returns a double. The perimeter of a rectangle is calculated by adding
+2*height + 2*width
+d) Must have a method called area which takes no parameters and returns a
+double. The area of a rectangle is calculated by multiplying the height by
+the width.
+Create a driver program which does the following:
+1) Using a loop print out the area and circumference of circles with radius 1, 2, 3 …
+9, 10. Here is what the first line should look like:
+Area of a circle with radius 1 is 3.14159265358979 circumference is
+6.28318530717959
+2) Using nested loops, print out the area and perimeter of rectangles with width 1, 2
+and 3 and heights 1, 2, and 3. ie, you’ll print out the area and perimeter for a
+rectangle 1x1, 1x2, 1x3, 2x1, 2x2, 2x3, 3x1, 3x2, and 3x3. The first line should
+look like:
+Area of a rectangle 1 by 1 is 1 it's perimeter is 4
+3) Create a triangle with sides 18, 30 and 24. Calculate its area, perimeter and
+height and print them as follows:
+Area of a triangle 18x30x24 is 216 it's perimeter is 72 and it's height is 24
+4) Create a triangle of sides 3, 4, 5 by calling the constructor with no parameters.
+Calculate its area, perimeter and height and print like the one above.
+Submitting your answer:
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
+Rubric:
+Circle class (25 points total):
+● Radius Attribute type double/float (4 points total)
+○ Type double/float (1 point)
+○ Defined Private (3 points)
+● Constructor (7 points total)
+○ Takes in a parameter of type double/float (3 points)
+○ Sets the radius (2 points)
+● Method Circumference (7 points total)
+○ Takes no parameters (1 point)
+○ Correctly calculates circumference (3 points)
+○ Correctly returns a double (3 points)
+● Method Area (7 points total)
+○ Takes no parameters (1 point)
+○ Correctly calculates circumference (3 points)
+○ Correctly returns a double (3 points)
+Triangle Class (35 points total):
+● Side1/Side2/Side3 attributes (4 points total)
+○ Type double/float (1 point each)
+○ Defined private (1 point)
+● Default Constructor (3 points total)
+○ Sets 3 attributes (1 point each)
+● Overloaded Constructor (6 points total)
+○ Takes in 3 parameters of type float (1 point each)
+○ Sets 3 attributes (1 point each)
+● Method perimeter (4 points total)
+○ Correctly calculates perimeter (2 points)
+○ Correctly returns a double/float (2 points)
+● Method area (7 points total)
+○ Correctly calculate p (2 points)
+○ Correctly calculates area (4 points)
+○ Correctly returns double/float (1 point)
+● Method height (7 points total)
+○ Finding smallest side (4 points)
+○ Correctly calculates area (2 points)
+○ Correctly returns double/float (1 point)
+● ToString override (4 points total)
+○ Correctly returns a string (2 points)
+○ Returns correct string (2 points)
+Rectangle Class (18 points total):
+● Height and Width attributes (4 points total)
+○ Should be of type double (1 point each)
+○ Should be private (1 point each)
+● Constructor (4 points total)
+○ Take in 2 parameters (2 points)
+○ Set the 2 attributes (2 points)
+● Method perimeter (5 points total)
+○ Correctly calculates the perimeter (3 points)
+○ Correctly returns a double (2 points)
+● Method area (5 points total)
+○ Correctly calculates the area (3 points)
+○ Correctly returns a double (2 points)
+Driver class/program (22 points total):
+● Print area of a circle with radius 1-9 ( 4 points total)
+● Print circumference of circle with radius 1-9 (4 points total)
+● Print area of rectangles 1x1, 1x2, 1x3 … 3x1, 3x2, 3x3 (4 points total)
+● Print perimeter of rectangles 1x1, 1x2, 1x3 … 3x1, 3x2, 3x3 (4 points total)
+● Print area, perimeter and height of triangle 18x30x24 (3 points total)
+● Print area, perimeter and height of triangle 3x4x5 (3 points total)
