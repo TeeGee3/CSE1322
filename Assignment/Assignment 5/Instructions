@@ -1,0 +1,263 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Assignment%205%20spring%202022%20v1.1.pdf
+
+
+CSE1322L Assignment 5
+Background:
+Topics
+- Interface
+- Abstract Class
+- Polymorphism
+- Casting of objects
+- Super/Base
+- ArraysList (Java) / List (C#)
+- Static variables/methods
+- Method Overriding
+- ToString
+For this assignment, you will code a basic insurance policy management system, which
+is depicted in the following UML (unified modeling language) diagram: 
+
+ OMIT UML bc idk how to show that in github....
+ 
+ 
+ 
+ This assignment is designed to emphasize the topics covered in the previous week’s
+classes and attempts to bring everything together.
+Your task:
+For this assignment, you will implement the Deductible interface, InsurancePolicy
+abstract class, and the TermLifeInsurancePolicy and HealthInsurancePolicy classes,
+utilizing the fundamentals of inheritance, polymorphism, casting, and ArrayLists (Java) /
+Lists (C#).
+Define the following three classes:
+1) Deductible Interface
+a) Must have an abstract method, hasMetDeductible, which take no
+parameters and returns a boolean, indicating whether a customer has met
+her/his deductible
+b) Must have an abstract method, hasMetTotalOutOfPocket, which take no
+parameters and returns a boolean, indicating whether a customer has met
+her/his total out-of-pocket amount
+2) InsurancePolicy Abstract Class
+a) Must have the following attributes:
+- policyHolder, string, private, customer’s full name
+- policyNumber, int, private, unique policy number
+- numberOfPolicies, int, static, private, unique identifier used as policy
+number, initialized with zero (0) and incremented each time a policy
+object is created.
+- premium, double, private, initialized with zero (0), amount of each
+monthly payment
+b) constructor which:
+- takes in a parameter, name, of type string, and assigns it to
+policyHolder attribute
+- assigns the value of ++numberOfPolicies to the policyNumber attribute
+(i.e. the creation of each object increments the numberOfLoans
+attribute, which is assigned to the accountNumber attribute)
+c) Must have getter/setter methods for all variables
+d) Must have an abstract method, selectPolicyCoverage, which takes no
+parameters and returns no value
+e) Must have an abstract method, calculatePremium, which takes no
+parameters and returns no value
+f) Must override the tostring method to return a string which includes a label
+and value for all attributes
+3) TermLifeInsurancePolicy Class
+a) Must inherit InsurancePolicy abstract class
+b) Must have the following attributes:
+- beneficiary, string, private, name of beneficiary
+- term, int, private, number of years policy is in effect
+- termPayout, double, private, amount of payout at end of term
+c) constructor which:
+- takes in a parameter, of type string, and assigns it to the policyHolder
+attribute via a call to the parent constructor
+- takes in a parameter, of type string, and assigns it to beneficiary
+attribute
+- takes in a parameter, of type int, and assigns it to term attribute
+- takes in a parameter, of type double, and assigns it to termPayout
+attribute
+d) Must have getter/setter methods for all variables
+e) Must override the abstract method, selectPolicyCoverage, which takes no
+parameters and returns no value, and prints a message indicating
+“selecting policy coverages”
+f) Must override the abstract method, calculatePremium, which takes no
+parameters and returns no value, and prints a message indicating
+“calculating and updating premium”
+g) Must override the tostring method to return a string which includes a label
+and value for all attributes
+4) HealthInsurancePolicy Class
+a) Must inherit InsurancePolicy abstract class and Deductible interface
+b) Must have the following attributes:
+- deductibleLimit, double, private, amount of required deductible
+- totalDeductiblePaid, double, private, initialized with zero (0), amount of
+deductible paid so far
+- coPayment, double, private, percent of bill that must be paid by patient
+- totalCoPaymentPaid, double, private, initialized with zero (0), total
+amount paid in co-payments by patient
+- totalOutOfPocket, double, private, total amount that must be paid by
+patients in co-payments and deductibles before insurance will cover all
+remaining costs
+c) constructor which:
+- takes in a parameter, of type string, and assigns it to the policyHolder
+attribute via a call to the parent constructor
+- takes in a parameter, of type double, and assigns it to deductibleLimit
+attribute
+- takes in a parameter, of type double, and assigns it to coPayment
+attribute
+- takes in a parameter, of type double, and assigns it to
+totalOutOfPocket attribute
+d) Must have getter/setter methods for all variables
+e) Must override the abstract method, selectPolicyCoverage, which takes no
+parameters and returns no value, and prints a message indicating
+“selecting policy coverages”
+f) Must override the abstract method, calculatePremium, which takes no
+parameters and returns no value, and prints a message indicating
+“calculating and updating premium”
+g) Must override the abstract method, hasMetDeductible, which takes no
+parameters and returns a boolean value, indicating whether a customer
+has met her/his deductible amount, using the following:
+- If the totalDeductiblePaid is greater than or equal to the
+deductibleLimit, the policy holder has met the deductible. Otherwise,
+the policy holder has not met the deductible.
+h) Must override the abstract method, hasMetTotalOutOfPocket, which takes
+no parameters and returns a boolean value, indicating whether a customer
+has met her/his total out-of-pocket amount, using the following:
+- If totalDeductiblePaid + totalCoPaymentPaid is greater than or equal to
+totalOutOfPocket, the policy holder has met the total out-of-pocket
+amount. Otherwise, the policy holder has not met the total out-ofpocket amount.
+i) Must override the tostring method to return a string which includes a label
+and value for all attributes
+Driver Program:
+In the driver class:
+- Create an ArrayList (Java) / List (C#) of InsurancePolicy objects.
+- Using a loop, prompt the user with the following menu, read in the user’s input, and
+populate the ArrayList (Java) / List (C#):
+1 – Create Health Insurance Policy
+2 – Create Term-Life Insurance Policy
+3 – Exit
+Enter Choice:
+• If the user enters 1, prompt the user and read in the values needed to create a
+HealthInsurancePolicy object, and add the object to the InsurancePolicy list
+• If the user enters 2, prompt the user and read in the values needed to create a
+TermLifeInsurancePolicy object, and add the object to the InsurancePolicy list
+• If the user enters 3, terminate the loop
+• If the user enters any character other than a 1, 2, or 3, the following error
+message should display: Error: Please enter valid input, and the user should be
+allowed to reenter a valid choice.
+- After the above loop ends and the list has been populated:
+• Traverse the entire list
+• For all objects in the list, print the policy holder name and policy number. If the
+object is a health insurance policy object, also print whether the deductible has
+be met and whether the total out-of-pocket amount has been met.
+Sample Output:
+1 – Create Health Insurance Policy
+2 – Create Term-Life Insurance Policy
+3 – Exit
+Enter Choice: 7
+Error: Please Enter Valid Input
+1 – Create Health Insurance Policy
+2 – Create Term-Life Insurance Policy
+3 – Exit
+Enter Choice: 1
+Enter name of policy holder:
+Snoop Dogg
+Enter deductible amount:
+500.00
+Enter co-payment amount:
+45.00
+Enter total out-of-pocket amount:
+1000.00
+1 – Create Health Insurance Policy
+2 – Create Term-Life Insurance Policy
+3 – Exit
+Enter Choice: 2
+Enter name of policy holder:
+Dr. Dre
+Enter name of beneficiary:
+Mary J
+Enter number of years in term:
+30
+Enter amount of payout:
+50000.00
+1 – Create Health Insurance Policy
+2 – Create Term-Life Insurance Policy
+3 – Exit
+Enter Choice: 2
+Enter name of policy holder:
+Don Duck
+Enter name of beneficiary:
+Sylvester
+Enter number of years in term:
+25
+Enter amount of payout:
+30000.00
+1 – Create Health Insurance Policy
+2 – Create Term-Life Insurance Policy
+3 – Exit
+Enter Choice: 1
+Enter name of policy holder:
+Captain America
+Enter deductible amount:
+1000.00
+Enter co-payment amount:
+30.00
+Enter total out-of-pocket amount:
+5000.00
+1 – Create Health Insurance Policy
+2 – Create Term-Life Insurance Policy
+3 – Exit
+Enter Choice: 3
+Snoop Dogg, 0, Met Deductible: false, Met Total Out-of-Pocket: false
+Dr. Dre, 1,
+Don Duck, 2,
+Captain America, 3, Met Deductible: false, Met Total Out-of-Pocket: false
+Submitting your answer:
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
+Rubric:
+● Deductible Interface (6 points total)
+○ Includes hasMetDeductible method (3 points)
+○ Includes hasMetTotalOutOfPocket method (3 points)
+● InsurancePolicy Abstract Class (14 points total)
+○ Includes attribute(s), with correct data type(s) and modifier(s) (i.e. public,
+private, static) (2 points)
+○ Includes overloaded constructor, which takes in parameter(s), initializes
+attribute(s), and calls parent constructor (4 points)
+○ Includes getter/setter method(s) for attribute(s) (2 points)
+○ Includes abstract method, setPolicyCoverage (2 points)
+○ Includes abstract method, calculatePremium (2 points)
+○ Includes override of toString method ( 2 points)
+● TermLifeInsurancePolicy Class (17 points total)
+○ Includes inheriting of abstract class (3 points)
+○ Includes attribute(s), with correct data type(s) and modifier(s) (i.e. public,
+private, static) (2 points)
+○ Includes overloaded constructor, which takes in parameter(s), initializes
+attribute(s), and calls parent constructor (4 points)
+○ Includes getter/setter method(s) for attribute(s) (2 points)
+○ Includes override of abstract method, setPolicyCoverage (2 points)
+○ Includes override of abstract method, calculatePremium (2 points)
+○ Includes override of toString method (2 points)
+● HealthInsurancePolicy Class (30 points total)
+○ Includes inheriting of abstract class (3 points)
+○ Includes inheriting of Interface (3 points)
+○ Includes attribute(s), with correct data type(s) and modifier(s) (i.e. public,
+private, static) (2 points)
+○ Includes overloaded constructor, which takes in parameter(s), initializes
+attribute(s), and calls parent constructor (4 points)
+○ Includes getter/setter method(s) for attribute(s) (2 points)
+○ Includes override of abstract method, setPolicyCoverage (2 points)
+○ Includes override of abstract method, calculatePremium (2 points)
+○ Includes override of abstract method, hasMetDeductible (5 points)
+○ Includes override of abstract method, hasMetTotalOutOfPocket (5 points)
+○ Includes override of toString method (2 points)
+● Driver program (33 points total)
+○ Creates ArrayList (Java) / List (C#) of Loan objects (3 points)
+○ Presents menu and reads user input (total 16 points)
+- Prompts user with correct menu and reads in user choice (2 point)
+- Provides error message for invalid user input (2 points)
+- Allows user to reenter choice in case of invalid user input (2 points)
+- Processes HealthInsurancePolicy inputs (2 points)
+- Creates and stores HealthInsurancePolicy objects (3 points)
+- Processes TermLifeInsurancePolicy inputs (2 points)
+- Creates and stores TermLifeInsurancePolicy objects (3 points)
+○ Includes printing of ArrayList (Java) / List (C#) (total 14 points)
+- traverses entire ArrayList (Java) / List (C#) (2 points)
+- prints all object’s policyHolder and policyNumber (4 points)
+- prints HealthInsurancePolicy values (8 points)
