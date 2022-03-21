@@ -1,1 +1,62 @@
-s
+package com.example.lab8;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+
+public class HelloApplication extends Application { //always extends application
+    @Override
+    public void start(Stage stage) throws IOException { //always override method start
+    // create the pop-up box
+        GridPane myGrid = new GridPane();
+        myGrid.setAlignment(Pos.CENTER);
+        myGrid.setVgap(10);
+        Scene myScene = new Scene(myGrid,500,500);
+
+        Label user_label = new Label("UserName: "); //prints quotes
+            TextField userTA = new TextField(); // creates text box and allows user to input data
+        Label passwd_label = new Label("Password: "); //prints quotes
+            PasswordField passwdTA = new PasswordField();// creates text box and allows user to input data but does not show input
+
+        Button submit_button = new Button("Log me in!");
+
+
+
+        myGrid.add(user_label, 0, 0); //determines position of username
+            myGrid.add(userTA, 1, 0); //shows text box for user input
+        myGrid.add(passwd_label, 0, 1);//determines position of passwd
+            myGrid.add(passwdTA, 1, 1);//shows text box for user input but displays dots
+        myGrid.add(submit_button, 1, 2);
+
+        stage.setScene(myScene);
+        stage.show();
+
+
+
+
+
+
+
+        /*FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
+        */
+
+    }
+
+    public static void main(String[] args) {
+        launch();
+    } //always call launch from main
+}
