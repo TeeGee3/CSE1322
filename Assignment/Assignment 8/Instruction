@@ -1,0 +1,196 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Assignment%208.1.0.pdf
+
+CSE1322L Assignment 8
+Background:
+Topics
+- Recursion
+- IP Address: https://www.youtube.com/watch?v=7_-qWlvQQtY
+- MAC Address: https://www.youtube.com/watch?v=mLYsPgeHFu4
+- Decimal/Binary Conversion:
+https://www.youtube.com/watch?v=sBmNIQRVOQg
+https://www.binaryhexconverter.com/decimal-to-binary-converter
+- Decimal/Hexadecimal Conversion:
+https://www.youtube.com/watch?v=u2ZkTdz8tcI
+https://www.binaryhexconverter.com/decimal-to-hex-converter
+- String Functions (split)
+- One-dimensional Arrays
+- Division/Modulus Operators
+Definitions
+IP Address – In general, an IP (Internet Protocol) address is a unique identifier
+assigned to each device (computer, phone, printer, TV, etc.) connected to the internet.
+The format of an IP address is 192.168.25.140 (decimal) or
+11000000.10101000.00011001.10001100 (binary)
+MAC Address – In general, a MAC (Media Access Control) address is a unique
+identifier assigned to each device (computer, phone, printer, TV, etc.) connected to a
+local network, i.e. your home’s computer network. The format of a MAC address is
+26:107:188:269:192:13 (decimal) or 1A:6B:BC:10D:C0:D (hexadecimal).
+Description
+For this assignment, you will implement a number conversion system, which does
+decimal-to-binary and decimal-to-hexadecimal conversions for numbers, IP addresses,
+and MAC addresses.
+Although we link to videos (about 3 minutes each) to help you understand IP and MAC
+addresses, detail knowledge of these topics is not needed to complete this assignment.
+We simply use the IP and MAC address formats as a basis for the assignment.
+That is, you will convert the digits in IP and MAC addresses from decimal to binary and
+from decimal to hexadecimal while maintaining the IP and MAC address formats.
+The steps to do the conversions are repetitive and are ideal for recursive programming
+techniques. So you will need to know how to do the conversions, and videos (about 3
+minutes each) are provided to instruct you on how to do these.
+Your task:
+In the driver class, create the following main method and four (4) recursive methods:
+- Create a recursive method, decimal2Binary, which:
+• takes one parameter of type integer (i.e. 25)
+• returns one string value, which represents the converted binary value (i.e. 11001)
+(note: leading zero’s on the left side of binary values are not included, i.e.
+00011001 is represented as 11001)
+• calls decimal2Binary recursively to convert the integer parameter into its binary
+equivalent (Note: The decimal2Binary method must use recursion. No loops,
+global variables, or stack access allowed. Otherwise, per the grading rubric,
+significant points will be deducted.)
+- Create a recursive method, decimal2Hexadecimal, which:
+• takes one parameter of type integer (i.e. 188)
+• returns one string value, which represents the converted hexadecimal value (i.e.
+BC)
+• calls decimal2Hexadecimal recursively to convert the integer parameter into its
+hexadecimal equivalent (Note: The decimal2Hexadecimal method must use
+recursion. No loops, global variables, or stack access allowed. Otherwise, per
+the grading rubric, significant points will be deducted.)
+• Hint: you may want to use a “nested if statement” or “switch/case statement”
+when addressing hexadecimal digits A, B, C, D, E, F.
+- Create a recursive method, convertIpAddress, which:
+• takes one parameter of type array of strings (i.e. string[]), which holds the four (4)
+decimal numbers of the IP address, with periods removed (i.e. 192 168 25 140)
+• takes one parameter of type integer, which represents the array index
+• returns one string value, which represents the converted binary IP address, with
+periods included (i.e. 11000000.10101000.11001.10001100)
+• calls convertIpAddress recursively to process each part of the binary IP address
+• calls the decimal2Binary method recursively to convert each decimal number of
+the IP address into its binary equivalent (Note: The convertIpAddress method
+must use recursion. No loops, global variables, or stack access allowed.
+Otherwise, per the grading rubric, significant points will be deducted.)
+- Create a recursive method, convertMacAddress, which:
+• takes one parameter of type array of strings (i.e. string[]), which holds the six (6)
+decimal numbers of the MAC address, with colons removed (i.e. 26 107 188 269
+192 13)
+• takes one parameter of type integer, which represents the array index
+• returns one string value, which represents the converted hexadecimal MAC
+address, with colons included (i.e. 1A:6B:BC:10D:C0:D)
+• calls convertMacAddress recursively to process each part of the decimal MAC
+address
+• calls the decimal2Hexadecimal method recursively to convert each decimal
+number of the MAC address into its hexadecimal equivalent (Note: The
+convertMacAddress method must use recursion. No loops, global variables, or
+stack access allowed. Otherwise, per the grading rubric, significant points will be
+deducted.)
+- Create a main method, which:
+• uses a loop to prompt the user with the following menu and reads in the user’s
+response:
+1 – Convert Decimal Number to Binary Number
+2 – Convert Decimal Number to Hexadecimal Number
+3 – Convert Decimal IP Address to Binary IP Address
+4 – Convert Decimal MAC Address to Hexadecimal MAC Address
+5 – Exit
+Enter Choice:
+• If the user enters 1, prompts the user and inputs a decimal integer, invokes
+decimal2Binary method, and displays results
+• If the user enters 2, prompts the user and inputs a decimal integer, invokes
+decimal2Hexadecimal method, and displays results
+• If the user enters 3, prompts the user and inputs a decimal IP address, removes
+periods from the IP address, invokes convertIpAddress method, and displays
+results
+• If the user enters 4, prompts the user and inputs a decimal MAC address,
+removes colons from the MAC address, invokes convertMacAddress method,
+and displays results
+• If the user enters 5, terminates the program
+• If the user enters any character other than a 1, 2, 3, 4, or 5, displays the following
+error message: Error: Please enter valid input, and allows the user to reenter a
+valid choice.
+Sample Output:
+1 – Convert Decimal Number to Binary Number
+2 – Convert Decimal Number to Hexadecimal Number
+3 – Convert Decimal IP Address to Binary IP Address
+4 – Convert Decimal MAC Address to Hexadecimal MAC Address
+5 – Exit
+Enter Choice: 9
+Error: Please Enter Valid Input
+1 – Convert Decimal Number to Binary Number
+2 – Convert Decimal Number to Hexadecimal Number
+3 – Convert Decimal IP Address to Binary IP Address
+4 – Convert Decimal MAC Address to Hexadecimal MAC Address
+5 – Exit
+Enter Choice: 1
+Enter Decimal Integer: 64
+Decimal Number: 64
+Binary Number: 1000000
+1 – Convert Decimal Number to Binary Number
+2 – Convert Decimal Number to Hexadecimal Number
+3 – Convert Decimal IP Address to Binary IP Address
+4 – Convert Decimal MAC Address to Hexadecimal MAC Address
+5 – Exit
+Enter Choice: 2
+Enter Decimal Integer: 207
+Decimal Number: 207
+Binary Number: CF
+1 – Convert Decimal Number to Binary Number
+2 – Convert Decimal Number to Hexadecimal Number
+3 – Convert Decimal IP Address to Binary IP Address
+4 – Convert Decimal MAC Address to Hexadecimal MAC Address
+5 – Exit
+Enter Choice: 3
+Enter Decimal IP Address (i.e. 192.168.35.10): 192.168.25.140
+Decimal IP Address: 192.168.25.140
+Binary IP Address: 11000000.10101000.11001.10001100
+1 – Convert Decimal Number to Binary Number
+2 – Convert Decimal Number to Hexadecimal Number
+3 – Convert Decimal IP Address to Binary IP Address
+4 – Convert Decimal MAC Address to Hexadecimal MAC Address
+5 – Exit
+Enter Choice: 4
+Enter Decimal MAC Address (i.e. 203:65:157:93:13:7): 26:107:188:269:192:13
+Decimal MAC Address: 26:107:188:269:192:13
+Hexadecimal MAC Address: 1A:6B:BC:10D:C0:D
+1 – Convert Decimal Number to Binary Number
+2 – Convert Decimal Number to Hexadecimal Number
+3 – Convert Decimal IP Address to Binary IP Address
+4 – Convert Decimal MAC Address to Hexadecimal MAC Address
+5 – Exit
+Enter Choice: 5
+Submitting your answer:
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
+Rubric:
+• Includes decimal2Binary recursive method (total points 20)
+- includes correct parameter (2 points)
+- returns correct data type (2 points)
+- calculates correct conversion value (6 points)
+- uses recursive call to decimal2Binary method to correctly convert
+values (10 points)
+• Includes decimal2Hexadecimal recursive method (total points 20)
+- includes correct parameter (2 points)
+- returns correct data type (2 points)
+- calculates correct conversion value (6 points)
+- uses recursive call to decimal2Hexadecimal method to correctly
+convert values (10 points)
+• Includes convertIpAddress recursive method (total points 20)
+- includes correct parameter (2 points)
+- returns correct data type (2 points)
+- uses recursive call to decimal2Binary method to correctly convert
+values (6 points)
+- uses recursive call to convertIpAddress method to process each
+number in the IP address (10 points)
+• Includes convertMacAddress recursive method (total points 20)
+- includes correct parameter (2 points)
+- returns correct data type (2 points)
+- uses recursive call to decimal2Hexadecimal method to correctly
+convert values (6 points)
+- uses recursive call to convertMacAddress method to process each
+number in the MAC address (10 points)
+● Includes main method (total points 20)
+- presents menu and reads in user choice (4 point)
+- provides error message for invalid user input (4 points)
+- presents user with second prompt and reads in detail information (i.e.
+decimal numbers, IP addresses, MAC addresses) (4 point)
+- allows user to reenter choice in case of invalid user input (4 points)
+- invokes correct method based on user choice (4 points)
