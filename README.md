@@ -1,7 +1,7 @@
 # CSE1322
  the second part
  
- Lab and Assignment Instructions https://ccse.kennesaw.edu/fye/1322_labs_assignments.phpc
+ Lab and Assignment Instructions https://ccse.kennesaw.edu/fye/1322_labs_assignments.php
  
  
  
