@@ -1,0 +1,73 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Lab%2012.pdf
+
+
+CSE1322L - Lab 12
+Objective:
+Using Runnable to employ Multithreading in Java
+Using Threads to employ Multithreading in C#
+Introduction:
+Congratulations, you just had Quintuplets. You’ll be putting them all to sleep, and each one of them will
+wake up at different times. Hopefully, you can have a nap while they sleep...good luck.
+For this lab you’ll be creating a Baby class. Then you’ll create 5 babies objects in separate threads.
+Each thread will run independently. Follow the instructions for your language below:
+Java:
+● Create a Baby class which implements Runnable
+● It should have variables: time (int) and name (String).
+● Write a constructor which takes in a name
+○ Set the name variable in the object with the name you were passed.
+○ Create a Random object
+○ Set the time variable to your Random Object’s .nextInt(5000)
+● Create a method run() with no parameters
+○ Print out “My name is X I am going to sleep for Yms” X should be the objects name, Y
+should be the time you randomly chose.
+○ Call Thread.sleep(time);
+○ Print out “My name is X, I am awake, feed me!!!”
+○ You will need to wrap the contents of your run method in a try/catch block, catching
+InterruptException.
+● In your main class’s main method, do the following:
+○ Thread b1 = new Thread(new Baby(“Noah”));
+○ Repeat this for b2, b3, b4, b5. They should be named Noah, Olivia, Liam, Emma,
+Amelia.
+○ Start all 5 babies with a statement like “b1.start();”
+C#:
+● Using System.Threading
+● Create a Baby class
+● It should have variables: time (int) and name (String).
+● Write a constructor which takes in a name
+○ Set the name variable in the object with the name you were passed.
+○ Create a Random object
+○ Set the time variable to your Random Object’s .Next(5000)
+● Create a method Run() with no parameters
+○ Print out “My name is X I am going to sleep for Yms” X should be the objects name, Y
+should be the time you randomly chose.
+○ Call Thread.Sleep(time);
+○ Print out “My name is X, I am awake, feed me!!!”
+○ You will need to wrap the contents of your run method in a try/catch block, catching
+ThreadInterruptedException.
+● In your main class’s main method, do the following:
+○ Create 5 babies as follows:
+■ Baby b1 = new Baby(“Noah”);
+■ Repeat this for b2, b3, b4, b5. They should be named Noah, Olivia, Liam, Emma,
+Amelia.
+○ Create 5 threads as follows:
+■ Thread t1 = new Thread(b1.Run);
+■ Repeat this for t2, t3, t4 and t5.
+○ Start all 5 babies with a statement like “t1.Start();”
+Sample Output:
+My name is Noah and I am going to sleep for 3398ms
+My name is Olivia and I am going to sleep for 1687ms
+My name is Amelia and I am going to sleep for 448ms
+My name is Emma and I am going to sleep for 4792ms
+My name is Liam and I am going to sleep for 2671ms
+My name is Amelia and I'm awake,feed me!!!
+My name is Olivia and I'm awake,feed me!!!
+My name is Liam and I'm awake,feed me!!!
+My name is Noah and I'm awake,feed me!!!
+My name is Emma and I'm awake,feed me!!!
+*Note the order the children will wake up is random.
+Submission Guidelines:
+You will turn in one program.
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
