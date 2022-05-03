@@ -1,0 +1,40 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Lab%2011.pdf
+
+
+CSE1322L - Lab 11
+Background:
+Have you ever written a program, saved a version, then later saved a different version and wish
+you could tell what changed? Well the correct answer to this problem is to use a source control
+system such as git, but for this lab, we are going to write a simple tool that shows what is
+different between two files.
+Steps:
+1. You’ll need two text files to test your code. Using your favorite text editor (notepad on
+windows, or textedit on mac, or similar) create two files with almost the same text in
+each. Be sure to save it as a text (.txt) file, not a .doc or anything else.
+2. Write a program to compare the two files and output their differences.
+a. Prompt the user for both file names.
+b. Open both files, and read them in line by line. Keep track of what line number
+you are on.
+c. Compare the line you read from file one, with the line you read from file two.
+i. If they are the same, do nothing.
+ii. If they are different, output the differences as follows:
+1. You’ll first output the line number that is different,
+2. Next, you’ll output the symbol “< ” and then the line from the first
+file.
+3. Finally, output a “> ” and the line from the second file.
+d. If the two files have a different number of lines, you should output “Files have
+different number of lines”/
+3. Be sure to handle all IO exceptions that could occur.
+Sample Output:
+Line 1
+< Humpty Dumpty sat on a wall
+> Humpty Dumpty tat on a wall
+Line 3
+< All the kings horses and all the kings men
+> All the kings horss and all the kings men
+Submission Guidelines:
+You will turn in one program.
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
