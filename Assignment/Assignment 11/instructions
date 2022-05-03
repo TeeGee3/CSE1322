@@ -1,0 +1,188 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Assignment%2011%20v1.0.pdf
+
+
+CSE1322L Assignment 11
+Parallel Processing
+Overview
+For this assignment, you will implement a partial banking application, where you will use threads
+to allow multiple account holders to process simultaneous withdrawals from a single checking
+account.
+Topics
+- Threads / Synchronization
+- Exception Handling (try/catch hierarchy)
+- OOP / Inheritance
+Coding Specifications
+Implement the following classes:
+1) CreditCard Class
+a) Must have the following attribute:
+- account balance: double, private, credit card balance
+- initialized with 5,000.00
+b) Must have a getBalance method, which
+- takes in no parameters
+- returns the amount within the balance attribute
+c) Must have a withdraw method, which
+- takes in a parameter of type double
+- returns no value
+- subtracts the parameter value from the account balance attribute
+2) CardHolder Class
+a) For Java only, must inherit Runnable abstract class
+b) For C# only, must create a lock object, i.e. “private static object padlock = new
+object();”
+c) Must have the following attribute
+- card: of type CreditCard, private, customer’s credit card
+d) Must have an overloaded constructor, which
+- takes in a parameter, of type CreditCard
+- assigns parameter value to the card attribute
+e) Must override the run method, which
+- creates a for loop that iterates one (1) to multiple times (i.e. one to six times)
+CSE1322L Assignment 11
+Parallel Processing
+- during each iteration of the loop
+• calls the makeWithdrawal method, passing a withdrawal amount
+(i.e. 500.00)
+• after calling the makeWithdrawal method, checks the account balance
+• if the account balance is less than zero (0), prints an appropriate error
+message to the screen
+f) Must have a makeWithdrawal method, which
+- uses the private method modifier (i.e. the method is a private method)
+- synchronizes the method {i.e. Synchronized (Java) / lock(this) (C#)}
+A. to synchronize the method in Java, include the keyword “Synchronized” in
+the makeWithdrawal method header
+B. to synchronize the method in C#,
+• create a lock object (see 2a above), i.e. “private static object padlock =
+new object();”
+• include body of the makeWithdrawal method inside the begin/end
+brackets of a lock statement,
+i.e. “lock(padlock) {..body of makeWithdrawal method..}”
+- takes in a parameter (withdrawal amount) of type double
+- returns no value
+- checks the account balance
+A. if the account balance is less than the withdrawal amount, prints an error
+message that contains the thread name, withdraw amount, and account
+balance (i.e. “Not enough in: thread 1 to withdraw: $500.00, Balance:
+$200.00”)
+B. if the account balance is greater than or equal to the withdrawal amount:
+• prints a message that contains the thread name, withdrawal amount,
+and account balance (i.e. “thread 1, before withdrawing $500.00,
+Balance: $4000.00”)
+• within a try/catch block, has the thread sleep for a “little bit” (i.e.
+thread.sleep(6000))
+• after leaving the try/catch block, invokes the withdraw method (i.e. the
+class method within the CreditCard class), passing in the withdraw
+amount (i.e. 500.00)
+• after returning from the withdraw method, prints a message that
+contains the thread name, withdrawal amount, and account balance
+(i.e. “thread 1, after withdrawing $500.00, Balance: $3500.00”)
+3) Driver Class
+a) using the CreditCard class, create a credit card object
+CSE1322L Assignment 11
+Parallel Processing
+b) using the CardHolder class, create a card holder object, passing the credit card
+object as a parameter
+c) create a thread that takes the CardHolder object as a parameter
+d) give this thread a name, i.e. John
+e) create another thread that takes the CardHolder object as a parameter
+f) give this thread a different name, i.e. Mary
+g) start each individual thread
+Sample Output
+Two Sample Outputs with Synchronization:
+With Synchronization, the first thread executed will maintain a lock on the withdrawal
+method (critical code section) until processing is complete and before allowing the second
+thread to execute the withdrawal method, maintaining a reliable account balance:
+Sample 1 with synchronization
+Note: Your output may vary.
+CSE1322L Assignment 11
+Parallel Processing
+Sample 2 with synchronization
+Note: Your output may vary.
+CSE1322L Assignment 11
+Parallel Processing
+Two Sample Outputs without Synchronization:
+Without Synchronization, threads execute the withdrawal method (critical code section)
+randomly and unpredictably. There is no guarantee that one thread can complete the
+withdrawal method before the other thread enters it, creating an unreliable account
+balance:
+Sample 1 without synchronization
+Note: Your output may vary.
+CSE1322L Assignment 11
+Parallel Processing
+Sample 2 without synchronization
+Note: Your output may vary.
+Submission Guidelines
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
+Grading Rubric
+1) CreditCard Class (total 21 pts)
+a) Must have the following attribute:
+- account balance: double, private, credit card balance (3 pts)
+- initialized with 5,000.00 (3 pts)
+b) Must have a getBalance method, which
+CSE1322L Assignment 11
+Parallel Processing
+- takes in no parameters (3 pts)
+- returns the amount within the balance attribute (3 pts)
+c) Must have a withdraw method, which
+- takes in a parameter of type double (3 pts)
+- returns no value (3 pts)
+- subtracts the parameter value from the balance attribute (3 pts)
+2) CardHolder Class (total 59 pts)
+a) For Java only, must inherit Runnable abstract class
+b) For C# only, must create a lock object, i.e. “private static object padlock = new
+object();”
+c) Must have the following attribute:
+- card, of type CreditCard, private, customer’s credit card (3 pts)
+d) Must have an overloaded constructor, which
+- takes in a parameter, of type CreditCard (3 pts)
+- assigns parameter value to the card attribute (3 pts)
+e) Must override the run method, which (total 13 pts)
+- creates a FOR loop that iterates one (1) to multiple times (i.e. one to six times)
+(4 pts)
+- during each iteration of the loop
+• calls the makeWithdrawal method, passing a withdrawal amount (i.e.
+500.00) (3 pts)
+• after calling the makeWithdrawal method, checks the account balance
+(3 pts)
+• if the account balance is less than zero (0), prints an appropriate error
+message to the screen (i.e. Account is Overdrawn) (3 pts)
+f) Must have a makeWithdrawal method, which (total 37 pts)
+- uses the private method modifier (i.e. the method is a private method) (3 pts)
+- synchronizes the method {i.e. Synchronized (Java) / lock(this) (C#)} (8 pts)
+A. to synchronize the method in Java, include the keyword “Synchronized” in
+the makeWithdrawal method header
+B. to synchronize the method in C#,
+• create a lock object (see 2a above), i.e. “private static object padlock =
+new object();”
+• include body of the makeWithdrawal method inside the begin/end
+brackets of a lock statement,
+i.e. “lock(padlock) {..body of makeWithdrawal method..}”
+- takes in a parameter of type double (3 pts)
+- returns no value (3 pts)
+CSE1322L Assignment 11
+Parallel Processing
+- checks the account balance
+A. if the account balance is less than the withdrawal amount, prints an error
+message that contains the thread name, withdraw amount, and balance (i.e.
+“Not enough in: thread 1 to withdraw: $500.00, Balance: $200.00”) (4 pts)
+B. if the account balance is greater than or equal to the withdrawal amount:
+• prints a message that contains the thread name, withdrawal amount,
+and account balance (i.e. “thread 1, before withdrawing $500.00,
+Balance: $4000.00”) (4 pts)
+• within a try/catch block, has the thread sleep for a “little bit” (i.e.
+thread.sleep(6000)) (4 pts)
+• after leaving the try/catch block, invokes the withdraw method (i.e. the
+class method within the CreditCard class), passing in the withdraw
+amount (i.e. 500.00) (4 pts)
+• after returning from the withdraw method, prints a message that
+contains the thread name, withdrawal amount, and account balance
+(i.e. “thread 1, after withdrawing $500.00, Balance: $3500.00”) (4 pts)
+3) Driver Class (total 20 pts)
+a) using the CreditCard class, create a credit card object (4 pts)
+b) using the CardHolder class, create a card holder object, passing the credit card
+object as a parameter (4 pts)
+c) create a thread that takes the CardHolder object as a parameter (2 pts)
+d) give this thread a name, i.e. John (2 pts)
+e) create another thread that takes the CardHolder object as a parameter (2 pts)
+f) give this thread a different name, i.e. Mary (2 pts)
+g) start each individual thread (4 pts)
