@@ -1,0 +1,83 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Lab%2013.pdf
+
+CSE1322L - Lab 13
+Concept Summary:
+In this lab you’ll be writing a program to keep track of your BlueRay collection. You’ll use
+an object to describe an individual disk, which will include the title, director, cost and year
+of release. Then you’ll utilize a linked list data structure to keep track of your collection.
+Finally you’ll write a driver to allow you to add disks to your collection, as well as see the
+current list of disks in your collection.
+Tasks:
+1. Write a BlueRayDisk class which has:
+a. Public attributes called title and director (strings), year of release (int) and cost
+(double).
+b. Constructor which takes in the 4 attributes and sets the objects variables.
+c. Override of toString/ToString which prints the objects variables as follows:
+[Dollar sign]Cost [space] Year of release [Space] Title [comma] Director
+$19.99 2019 Avengers - Endgame, Anthony Russo & Joe Russo
+2. Write a node class which has a data field that holds a BlueRayDisk and a next field which
+is a link to another node.
+3. Write a BlueRayCollection class which has:
+a. A private link called head that links to a Node, it should be initialized to null
+b. A public method called add() which takes 4 parameters (title, director, year of
+release, cost) and returns nothing. It should create a new Node and add it to the
+end of the linked list.
+c. A public method called show_all() which takes no parameters and returns nothing,
+but prints out all the BlueRays in the collection. It should utilize the toString or
+ToString method to print each BlueRay.
+4. Write a main program which does the following:
+a. Instantiate a BlueRayCollection
+b. Present the user with a menu that gives the following choices:
+0. Quit
+1. Add BlueRay to collection
+2. See collection
+c. Read in the users choice. If they choose 1, prompt the user for a title, director,
+year of release and year, and call the add method in the BlueRayCollection object
+you created. If they choose 2, call the show_all method in the BlueRayCollection
+object you created.
+Sample Output:
+0. Quit
+1. Add BlueRay to collection
+2. See collection
+1
+What is the title?
+Jaws
+What is the director?
+Steven Spielberg
+What is the year of release?
+1975
+What is the cost?
+19.95
+0. Quit
+1. Add BlueRay to collection
+2. See collection
+2
+$19.95 1975 Jaws, Steven Spielberg
+0. Quit
+1. Add BlueRay to collection
+2. See collection
+1
+What is the title?
+Jurassic Park
+What is the director?
+Steven Spielberg
+What is the year of release?
+1993
+What is the cost?
+17.99
+0. Quit
+1. Add BlueRay to collection
+2. See collection
+2
+$19.95 1975 Jaws, Steven Spielberg
+$17.99 1993 Jurassic Park, Steven Spielberg
+0. Quit
+1. Add BlueRay to collection
+2. See collection
+0
+Submission Guidelines:
+You will turn in one program with multiple classes.
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
