@@ -1,0 +1,350 @@
+https://ccse.kennesaw.edu/fye/CSE1322L%20Assignment%2012.pdf
+
+
+CSE1322L Assignment 12
+Dynamic Data Structures
+Overview
+Topics
+- Doubly Linked List
+Description
+For this assignment, you will code a basic job leads management system to keep track of your
+job search opportunities, using a doubly linked list. Your implementation should include the
+following:
+1. Create a doubly linked link
+2. Add new job leads to the front of the list
+3. Add new job leads to the tail of the list
+4. Remove job leads from the list
+5. Print the list from head to tail
+6. Print the list from tail to head
+Coding Specifications
+Implement the following classes:
+1) JobLead Class
+a) Must have the following attributes:
+- company name: string, private, company full name
+- contact name: string, private, contact person full name
+- contact phone: string, private, contact person phone number
+- job title: string, private, job title
+- job description: string, private, job description
+b) Must have an overloaded constructor which takes in the five (5) attributes and sets
+the object variables
+c) Must have getter/setter methods for the five (5) attributes
+d) Must override the tostring method to return a string which includes a label and
+value for all five (5) attributes
+2) Node Class
+a) Must have the following attributes:
+- lead: JobLead, public, a job lead object
+CSE1322L Assignment 12
+Dynamic Data Structures
+- prev: Node, public, a Node pointer which points to the previous node in the
+list
+- next: Node, public, a Node pointer which points to the next node in the list
+3) JobLeadsList Class
+a) Must have the following attribute:
+- head: Node, private, a pointer which always points to the first node in the list
+(i.e. the head)
+- tail: Node, private, a pointer which always points to the last node in the list
+(i.e. the tail)
+b) Must have a default constructor, which sets the head and tail attributes to null
+c) Must have an add_to_front method, which
+- returns no value
+- takes in five (5) parameters of type string (company name, contact name,
+contact phone, job title, and job description)
+- creates a new JobLead object
+- creates a new Node object
+- updates the Node object and adds it to the front of the list
+- updates the head and tail pointers, if necessary
+- prints a message indicating that the addition was successful
+d) Must have an add_to_tail method, which
+- returns no value
+- takes in five (5) parameters of type string (company name, contact name,
+contact phone, job title, and job description)
+- creates a new JobLead object
+- creates a new Node object
+- updates the Node object and adds it to the tail of the list
+- updates the head and tail pointers, if necessary
+- prints a message indicating that the addition was successful
+e) Must have a remove_lead method
+- returns no value
+- takes in two (2) parameters of type string (company name and job title)
+- if the list is empty, prints an appropriate message
+- searches the list for the node with the corresponding company name and job
+title
+- if the node is not found in the list, prints an appropriate message
+- if the node is found in the list, removes it from the list and prints an
+appropriate message
+CSE1322L Assignment 12
+Dynamic Data Structures
+- updates the head and tail pointers, if necessary
+f) Must have a print_head_to_tail method
+- returns no values
+- takes in no parameters
+- if the list is empty, prints an appropriate message
+- traverses the list from the head to the tail and prints the content of each node
+g) Must have a print_tail_to_head method
+- returns no values
+- takes in no parameters
+- if the list is empty, prints an appropriate message
+- traverses the list from the tail to the head and prints the content of each node
+4) Driver Class
+a) Creates a JobLeadsList object
+b) Processes Main Menu
+- Uses a loop to prompt the user with the following Main Menu and read in the
+user’s response:
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice:
+- If the user enters 1, execute functionality to add new lead at head of list
+- If the user enters 2, execute functionality to add new lead at tail of list
+- If the user enters 3, execute functionality to remove a lead from list
+- If the user enters 4, execute functionality to print list from head to tail
+- If the user enters 5, execute functionality to print list from tail to head
+- If the user enters 6, terminate the program
+- If the user enters any character other than a 1, 2, 3, 4, 5, or 6, displays the
+following error message: Error: Please enter a valid choice (1 thru 6), and
+allows the user to reenter a valid choice.
+c) Adds new lead to head of list:
+CSE1322L Assignment 12
+Dynamic Data Structures
+- Prompt the user to enter the company name, contact name, contact phone, job
+title, and job description
+- Call method to add lead to head of list
+d) Adds new lead to tail of list:
+- Prompt the user to enter the company name, contact name, contact phone, job
+title, and job description
+- Call method to add lead to tail of list
+e) Deletes lead from list:
+- Prompt the user to enter the company name and job title
+- Call method to remove lead from list
+f) Prints list from head to tail
+- Call method to print list from head to tail
+g) Prints list from tail to head
+- Call method to print list from tail to head
+Sample Output
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 8
+Error: Please enter a valid choice (1 thru 6)
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 1
+Error: Please enter a valid choice (1 thru 6)
+Enter Company Name: IBM Corp
+CSE1322L Assignment 12
+Dynamic Data Structures
+Enter Contact Person Name: John Doe
+Enter Contact Person Phone: 111111111
+Enter Job Title: Computer Programmer
+Enter Job Description: Write Java/C# code…
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 2
+Error: Please enter a valid choice (1 thru 6)
+Enter Company Name: Microsoft Corp
+Enter Contact Person Name: Jane Doe
+Enter Contact Person Phone: 222222222
+Enter Job Title: Business Analyst
+Enter Job Description: Oversee systems development…
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 1
+Error: Please enter a valid choice (1 thru 6)
+Enter Company Name: Apple Corp
+Enter Contact Person Name: Bugs Bunny
+Enter Contact Person Phone: 333333333
+Enter Job Title: QA Analyst
+Enter Job Description: Write test cases…
+1 – Add lead to head of list
+CSE1322L Assignment 12
+Dynamic Data Structures
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 4
+Error: Please enter a valid choice (1 thru 6)
+Company: Apple, Contact: Bugs Bunny, Phone: 333333333, Title: QA Analyst, Description: Oversee systems
+development…
+Company: IBM, Contact: John Doe, Phone: 111111111, Title: Computer Programmer, Description: Write
+Java/C# code…
+Company: Microsoft, Contact: Jane Doe, Phone: 222222222, Title: Business Analyst, Description: Oversee
+systems development…
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 5
+Error: Please enter a valid choice (1 thru 6)
+Company: Microsoft, Contact: Jane Doe, Phone: 222222222, Title: Business Analyst, Description: Oversee
+systems development…
+Company: IBM, Contact: John Doe, Phone: 111111111, Title: Computer Programmer, Description: Write
+Java/C# code…
+Company: Apple, Contact: Bugs Bunny, Phone: 333333333, Title: QA Analyst, Description: Oversee systems
+development…
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 3
+CSE1322L Assignment 12
+Dynamic Data Structures
+Error: Please enter a valid choice (1 thru 6)
+Enter Company Name: EBM
+Enter Job Title: Computer Programmer
+Error: Job Lead Not Found
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 3
+Error: Please enter a valid choice (1 thru 6)
+Enter Company Name: IBM
+Enter Job Title: Computer Programmer
+Job Lead Deleted
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 4
+Error: Please enter a valid choice (1 thru 6)
+Company: Apple, Contact: Bugs Bunny, Phone: 333333333, Title: QA Analyst, Description: Oversee systems
+development…
+Company: Microsoft, Contact: Jane Doe, Phone: 222222222, Title: Business Analyst, Description: Oversee
+systems development…
+1 – Add lead to head of list
+2 – Add lead to tail of list
+3 – Delete a lead
+4 – Print list from head to tail
+CSE1322L Assignment 12
+Dynamic Data Structures
+5 – Print list from tail to head
+6 – Exit
+Enter Choice: 5
+Error: Please enter a valid choice (1 thru 6)
+Company: Microsoft, Contact: Jane Doe, Phone: 222222222, Title: Business Analyst, Description: Oversee
+systems development…
+Company: Apple, Contact: Bugs Bunny, Phone: 333333333, Title: QA Analyst, Description: Oversee systems
+development…
+Submission Guidlines
+Please follow the posted submission guidelines here:
+https://ccse.kennesaw.edu/fye/submissionguidelines.php
+Ensure you submit before the deadline listed on the lab schedule for CSE1322L here:
+https://ccse.kennesaw.edu/fye/courseschedules.php
+Grading Rubric
+1) JobLead Class (13 pts Total)
+a) Must have the following attributes: (3 pts)
+- company name: string, private, company full name
+- contact name: string, private, contact person full name
+- contact phone: string, private, contact person phone number
+- job title: string, private, job title
+- job description: string, private, job description
+b) Must have an overloaded constructor which takes in the five (5) attributes and sets
+the object variables (3 pts)
+c) Must have getter/setter methods for the five (5) attributes (4 pts)
+d) Must override the tostring method to return a string which includes a label and
+value for all five (5) attributes (3 pts)
+2) Node Class (6 pts Total)
+a) Must have the following attributes: (6 pts Total)
+- lead: JobLead, public, a job lead object (2 pts)
+- prev: Node, public, a Node pointer which points to the previous node in the
+list (2 pts)
+CSE1322L Assignment 12
+Dynamic Data Structures
+- next: Node, public, a Node pointer which points to the next node in the list (2
+pts)
+3) JobLeadsList Class (69 pts Total)
+a) Must have the following attribute: (4 pts Total)
+- head: Node, private, a pointer which always points to the first node in the list
+(i.e. the head) (2 pts)
+- tail: Node, private, a pointer which always points to the last node in the list
+(i.e. the tail) (2 pts)
+b) Must have a default constructor, which sets the head and tail attributes to null (3
+pts)
+c) Must have an add_to_front method, which (15 pts Total)
+- returns no value (2 pts)
+- takes in five (5) parameters of type string (company name, contact name,
+contact phone, job title, and job description) (2 pts)
+- creates a new JobLead object (2 pts)
+- creates a new Node object (2 pts)
+- updates the Node object and adds it to the front of the list (3 pts)
+- updates the head and tail pointers, if necessary (2 pts)
+- prints a message indicating that the addition was successful (2 pts)
+d) Must have an add_to_tail method, which (15 pts Total)
+- returns no value (2 pts)
+- takes in five (5) parameters of type string (company name, contact name,
+contact phone, job title, and job description) (2 pts)
+- creates a new JobLead object (2 pts)
+- creates a new Node object (2 pts)
+- updates the Node object and adds it to the tail of the list (3 pts)
+- updates the head and tail pointers, if necessary (2 pts)
+- prints a message indicating that the addition was successful (2 pts)
+e) Must have a remove_lead method (14 pts Total)
+- returns no value (1 pts)
+- takes in two (2) parameters of type string (company name and job title) (2 pts)
+- if the list is empty, prints an appropriate message (2 pts)
+- searches the list for the node with the corresponding company name and job
+title (3 pts)
+- if the node is not found in the list, prints an appropriate message (2 pts)
+- if the node is found in the list, removes it from the list and prints an
+appropriate message (2 pts)
+CSE1322L Assignment 12
+Dynamic Data Structures
+- updates the head and tail pointers, if necessary (2 pts)
+f) Must have a print_head_to_tail method (9 pts Total)
+- returns no values (2 pts)
+- takes in no parameters (2 pts)
+- if the list is empty, prints an appropriate message (2 pts)
+- traverses the list from the head to the tail and prints the content of each node
+(3 pts)
+g) Must have a print_tail_to_head method (9 pts Total)
+- returns no values (2 pts)
+- takes in no parameters (2 pts)
+- if the list is empty, prints an appropriate message (2 pts)
+- traverses the list from the tail to the head and prints the content of each node
+(3 pts)
+4) Driver Class (12 pts Total)
+a) Creates a JobLeadsList object (2 pts)
+b) Processes Main Menu (2 pts)
+c) Adds new lead to head of list: (2 pts Total)
+- Prompt the user to enter the company name, contact name, contact phone, job
+title, and job description
+- Call method to add lead to head of list
+d) Adds new lead to tail of list: (2 pts Total)
+- Prompt the user to enter the company name, contact name, contact phone, job
+title, and job description
+- Call method to add lead to tail of list
+e) Deletes lead from list: (2 pts Total)
+- Prompt the user to enter the company name and job title
+- Call method to remove lead from list
+f) Prints list from head to tail (1 pts Total)
+- Call method to print list from head to tail
+g) Prints list from tail to head (1 pts Total)
+- Call method to print list from tail to head
